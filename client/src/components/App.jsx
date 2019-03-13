@@ -38,21 +38,20 @@ export default class App extends Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">MERN Boilerplate</h1>
-          user: {this.state.user.username}
-          <NavLink to="/" exact>Home</NavLink>
+          <h1 className="App-title">BandME</h1>
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
-          {api.isLoggedIn() && <Link to="/" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-          <NavLink to="/secret">Secret</NavLink>
+          {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
+          {/* <NavLink to="/secret">Secret</NavLink>
+          user: {this.state.user.username}
+          <NavLink to="/" exact>Home</NavLink> */}
         </header>
         <Switch>
 
 
         <Route
-            exact
-            path='/'
-            render={(props) => <Home {...props}  setUser={this.setUser} />}
+            path='/home'
+            render={(props) => <Home {...props}  setUser={this.setUser} user={this.state.user}/>}
           />
           <Route
             path='/signup'

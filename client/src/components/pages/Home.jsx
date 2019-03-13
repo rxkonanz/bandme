@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
+import { Redirect } from 'react-router-dom'
 
 export default class Home extends Component {
 
   
-  componentDidMount(){
 
-    console.log(api.isLoggedIn())
-    console.log(api.getLocalStorageUser())
 
-    Axios.get('http://localhost:5000/api/whatever',).then(res=>{
-      // console.log(res)
-    })
-
+  logIn = () => {
+    if(!api.isLoggedIn()){ //DO THIS ONE
+      return (
+        <Redirect to="/signup" />
+      )
+    }
   }
 
+  render() {    
+    
 
-  render() {                
     return (
+      
       <div className="Home">
+        {this.logIn()}
+         
         <h2>Home</h2>
         <p>This is a sample project with the MERN stack</p>
       </div>

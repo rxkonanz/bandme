@@ -25,7 +25,7 @@ export default class Login extends Component {
         // console.log(api.getLocalStorageUser())
         // this.setState({user:api.getLocalStorageUser()})
         this.props.setUser()
-        this.props.history.push("/") // Redirect to the home page
+        this.props.history.push("/home") // Redirect to the home page
       })
       .catch(err => this.setState({ message: err.toString() }))
   }
