@@ -34,15 +34,27 @@ export default class Login extends Component {
     console.log()
     return (
       <div className="Login">
-        <h2>Login</h2>
-        <form>
-          Username: <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
-          Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
-          <button onClick={(e) => this.handleClick(e)}>Login</button>
-        </form>
-        {this.state.message && <div className="info info-danger">
-          {this.state.message}
-        </div>}
+        <h2 className="loginTitle">Login</h2>
+        <div className="grid align__item">
+          <div className="login">
+            <form className="form">
+              <div className="form__field">
+                <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="username" />
+              </div>
+
+              <div class="form__field">
+                <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} placeholder="password"/>
+              </div>
+
+              <div class="form__field">
+                  <input type="submit" onClick={(e) => this.handleClick(e)} value="Log In"></input>
+                  <a href="/band-register">Don't have an Account? Register.</a>
+              </div>
+            </form>
+            {this.state.message && <div className="info info-danger">
+            {this.state.message}</div>}
+          </div>
+        </div>
       </div>
     );
   }
