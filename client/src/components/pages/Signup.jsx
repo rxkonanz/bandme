@@ -55,9 +55,6 @@ export default class Signup extends Component {
           Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
           Band<input checked={this.state.artistType === 'band'} onChange={(e)=>this.bandOrMusician('band')} type="radio" name="artistType" value="Band"/> 
           Musician<input checked={this.state.artistType === 'musician'} onChange={(e)=>this.bandOrMusician('musician')} type="radio" name="artistType" value="Musician"/>
-
-
-
           <br></br><button onClick={(e) => this.handleClick(e)}>Signup</button>
         </form>
         {this.state.message && <div className="info info-danger">

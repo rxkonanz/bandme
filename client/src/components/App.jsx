@@ -39,8 +39,8 @@ export default class App extends Component {
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">BandME</h1>
-          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+          {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
           {/* <NavLink to="/secret">Secret</NavLink>
           user: {this.state.user.username}
@@ -48,8 +48,12 @@ export default class App extends Component {
         </header>
         <Switch>
 
-
         <Route
+            exact
+            path='/'
+            render={(props) => <Login {...props} setUser={this.setUser}/>}
+          />
+          <Route 
             path='/home'
             render={(props) => <Home {...props}  setUser={this.setUser} user={this.state.user}/>}
           />
@@ -62,9 +66,7 @@ export default class App extends Component {
             render={(props) => <Login {...props} setUser={this.setUser}/>}
           />
           
-          
           <Route render={() => <h2>404</h2>} />
-
 
         </Switch>
       </div>
