@@ -38,7 +38,7 @@ export default class App extends Component {
       <div className="App">
         <header className="App-header">
           <h1 className="App-title">BandME</h1>
-          {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
+          {!api.isLoggedIn() && <NavLink to="/login">Log In</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
         </header>

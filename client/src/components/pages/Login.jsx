@@ -36,7 +36,7 @@ export default class Login extends Component {
       <div className="Login">
         <div className="grid align__item">
           <div className="login">
-            <h4 className="form-title">Login</h4>
+            <h4 className="form-title">Log In</h4>
             <form className="form">
               <div className="form__field">
                 <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="username" />
