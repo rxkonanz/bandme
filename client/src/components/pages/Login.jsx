@@ -48,7 +48,7 @@ export default class Login extends Component {
 
               <div class="form__field">
                   <input type="submit" onClick={(e) => this.handleClick(e)} value="Log In"></input>
-                  <a href="/band-register">Don't have an Account? Register.</a>
+                  <a href="/signup">Don't have an Account? Register.</a>
               </div>
             </form>
             {this.state.message && <div className="info info-danger">
