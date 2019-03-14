@@ -42,16 +42,13 @@ export default class App extends Component {
           {!api.isLoggedIn() && <NavLink to="/login">Login</NavLink>}
           {!api.isLoggedIn() && <NavLink to="/signup">Signup</NavLink>}
           {api.isLoggedIn() && <Link to="/login" onClick={(e) => this.handleLogoutClick(e)}>Logout</Link>}
-          {/* <NavLink to="/secret">Secret</NavLink>
-          user: {this.state.user.username}
-          <NavLink to="/" exact>Home</NavLink> */}
         </header>
         <Switch>
 
         <Route
             exact
             path='/'
-            render={(props) => <Login {...props} setUser={this.setUser}/>}
+            render={(props) => <Home {...props}  setUser={this.setUser} user={this.state.user}/>}
           />
           <Route 
             path='/home'
