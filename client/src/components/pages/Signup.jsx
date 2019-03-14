@@ -48,18 +48,45 @@ export default class Signup extends Component {
   render() {
     return (
       <div className="Signup">
-        <h2>Signup</h2>
-        <form>
+        <div className="grid align__item">
+          <div className="login">
+              <h4 className="form-title">Register</h4>
+              <form className="form">
+                  <div className="form__field">
+                    <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
+                  </div>
+                  
+                  <div className="form__field">
+                    <input type="text" value={this.state.name} name="name" placeholder="name" onChange={this.handleInputChange} />
+                  </div>
+
+                  <div class="form__field">
+                    <input type="password" value={this.state.password} name="password" placeholder="password" onChange={this.handleInputChange} />
+                  </div>
+
+                  Band <input checked={this.state.artistType === 'band'} className="choose-type" onChange={(e)=>this.bandOrMusician('band')} type="radio" name="artistType" value="Band"/>
+                  Musician <input checked={this.state.artistType === 'musician'} className="choose-type" onChange={(e)=>this.bandOrMusician('musician')} type="radio" name="artistType" value="Musician"/>
+
+                  <div class="form__field">
+                    <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input>
+                    <a href="/band-login">Already have an Account? Log In.</a>
+                  </div>
+              </form>
+              {this.state.message && <div className="info info-danger">
+              {this.state.message}
+              </div>}
+          </div>
+        </div>
+
+        {/* <form>
           Username: <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
           Name: <input type="text" value={this.state.name} name="name" onChange={this.handleInputChange} /> <br />
           Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
           Band<input checked={this.state.artistType === 'band'} onChange={(e)=>this.bandOrMusician('band')} type="radio" name="artistType" value="Band"/> 
           Musician<input checked={this.state.artistType === 'musician'} onChange={(e)=>this.bandOrMusician('musician')} type="radio" name="artistType" value="Musician"/>
           <br></br><button onClick={(e) => this.handleClick(e)}>Signup</button>
-        </form>
-        {this.state.message && <div className="info info-danger">
-          {this.state.message}
-        </div>}
+        </form> */}
+        
       </div>
     );
   }

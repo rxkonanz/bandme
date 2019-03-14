@@ -34,9 +34,9 @@ export default class Login extends Component {
     console.log()
     return (
       <div className="Login">
-        <h2 className="loginTitle">Login</h2>
         <div className="grid align__item">
           <div className="login">
+            <h4 className="form-title">Login</h4>
             <form className="form">
               <div className="form__field">
                 <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} placeholder="username" />
