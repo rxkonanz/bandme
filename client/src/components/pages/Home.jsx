@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom'
 export default class Home extends Component {
 
   state = {
-    artistType: this.props.user.artistType
+    artistType: localStorage.artistType,
+    homeData: []
   }
 
   componentDidMount() {
@@ -27,12 +28,11 @@ export default class Home extends Component {
   }
 
   getMusicians = () => {
-    Axios.get("http://localhost:5000/api/all-musicians")
+   Axios.get("http://localhost:5000/api/all-musicians")
       .then(res => {
-        console.log(res.data.allMusicians)
-        let musiciansArray = res.data.allMusicians;
-        musiciansArray.map((musician,i) => {
-          return <p>{musician.username}</p>
+        let musiciansArray = res.data.allMusicians
+        this.setState({
+          homeData: musiciansArray
         })
       })
   }
@@ -40,17 +40,25 @@ export default class Home extends Component {
   getBands = () => {
     Axios.get("http://localhost:5000/api/all-bands")
       .then(res => {
-          console.log(res.data)
-          res.data.allBands.map((band,i) => {
-            return <p>{band.username}</p>
-          })
+        let bandsArray = res.data.allBands
+        this.setState({
+          homeData: bandsArray
+        })
       })
+  }
+
+  showData = () => {
+    let result = this.state.homeData.map((element,i) => {
+      return (<p key={i}> {element.username}</p>)
+    })
+    return result
   }
 
   render() {    
     return (  
       <div className="Home">
         {this.logIn()}
+        {this.showData()}
       </div>
     );
   }
