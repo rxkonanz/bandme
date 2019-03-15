@@ -1,4 +1,4 @@
-# MERN boilerplate | Ironhack Fullstack Application
+# BandME | MERN Application
 
 - [Global information](#global-information)
 - [Setups and execution of the project](#setups-and-execution-of-the-project)
