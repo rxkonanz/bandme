@@ -17,4 +17,12 @@ router.get("/all-bands", (req, res) => {
   })
 })
 
+router.get("/guitarists", (req, res) => {
+  User.find({artistType: 'musician'})
+  .then(allGuitarists => {
+    res.json({allGuitarists})
+  })
+})
+
+
 module.exports = router;

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
-import { Redirect } from 'react-router-dom'
+import { Redirect, NavLink } from 'react-router-dom'
 
 export default class Home extends Component {
 
@@ -49,7 +49,9 @@ export default class Home extends Component {
 
   showData = () => {
     let result = this.state.homeData.map((element,i) => {
-      return (<div><iframe width="560" height="315" src={element.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p key={i}>{element.username}</p></div>)
+      return (<div>
+                <NavLink to="/musicians/guitar">Guitar Players</NavLink>
+              </div>)
     })
     return result
   }
