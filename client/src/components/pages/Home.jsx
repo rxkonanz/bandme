@@ -49,7 +49,7 @@ export default class Home extends Component {
 
   showData = () => {
     let result = this.state.homeData.map((element,i) => {
-      return (<p key={i}> {element.username}</p>)
+      return (<div><iframe width="560" height="315" src={element.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><p key={i}>{element.username}</p></div>)
     })
     return result
   }

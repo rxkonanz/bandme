@@ -22,8 +22,6 @@ export default class Login extends Component {
     e.preventDefault()
     api.login(this.state.username, this.state.password)
       .then(result => {
-        // console.log(api.getLocalStorageUser())
-        // this.setState({user:api.getLocalStorageUser()})
         this.props.setUser()
         this.props.history.push("/home") // Redirect to the home page
       })

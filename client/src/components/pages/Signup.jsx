@@ -9,7 +9,8 @@ export default class Signup extends Component {
       name: "",
       password: "",
       message: null,
-      artistType:'band'
+      artistType:'band',
+      ytLink: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -26,7 +27,8 @@ export default class Signup extends Component {
       username: this.state.username,
       name: this.state.name,
       password: this.state.password,
-      artistType: this.state.artistType
+      artistType: this.state.artistType,
+      ytLink: this.getVideoId(this.state.ytLink)
     }
     api.signup(data)
       .then(result => {
@@ -45,6 +47,17 @@ export default class Signup extends Component {
     })
   }
 
+  getVideoId = (url) => {
+    var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+    var match = url.match(regExp);
+
+    if (match && match[2].length == 11) {
+        return "https://www.youtube.com/embed/" + match[2];
+    } else {
+        return 'error';
+    }
+  }
+
   render() {
     return (
       <div className="Signup">
@@ -52,6 +65,9 @@ export default class Signup extends Component {
           <div className="login">
               <h4 className="form-title">Register</h4>
               <form className="form">
+
+                  <input name="photo" type="file" id="set-profile-picture" class="fancy-input" accept="image/x-png,image/gif,image/jpeg" required />
+
                   <div className="form__field">
                     <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
                   </div>
@@ -68,6 +84,10 @@ export default class Signup extends Component {
                   Musician <input checked={this.state.artistType === 'musician'} className="choose-type" onChange={(e)=>this.bandOrMusician('musician')} type="radio" name="artistType" value="Musician"/>
 
                   <div class="form__field">
+                    <input type="text" value={this.state.ytLink} name="ytLink" placeholder="youtube link" onChange={this.handleInputChange} />
+                  </div>
+
+                  <div class="form__field">
                     <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input>
                     <a href="/login">Already have an Account? Log In.</a>
                   </div>
@@ -76,17 +96,7 @@ export default class Signup extends Component {
               {this.state.message}
               </div>}
           </div>
-        </div>
-
-        {/* <form>
-          Username: <input type="text" value={this.state.username} name="username" onChange={this.handleInputChange} /> <br />
-          Name: <input type="text" value={this.state.name} name="name" onChange={this.handleInputChange} /> <br />
-          Password: <input type="password" value={this.state.password} name="password" onChange={this.handleInputChange} /> <br />
-          Band<input checked={this.state.artistType === 'band'} onChange={(e)=>this.bandOrMusician('band')} type="radio" name="artistType" value="Band"/> 
-          Musician<input checked={this.state.artistType === 'musician'} onChange={(e)=>this.bandOrMusician('musician')} type="radio" name="artistType" value="Musician"/>
-          <br></br><button onClick={(e) => this.handleClick(e)}>Signup</button>
-        </form> */}
-        
+        </div> 
       </div>
     );
   }

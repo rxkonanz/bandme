@@ -4,7 +4,8 @@ const Schema = mongoose.Schema;
 const userSchema = new Schema({
   username: String,
   password: String,
-  artistType: String
+  artistType: String,
+  ytLink: String
 }, {
     timestamps: {
       createdAt: 'created_at',

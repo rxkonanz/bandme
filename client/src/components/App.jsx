@@ -69,16 +69,3 @@ export default class App extends Component {
     );
   }
 }
-
-/*          <Route
-            path='/'
-            render={(props) => <Home {...props} setUser={this.setUser} />}
-          />
-          <Route
-            path='/signup'
-            render={(props) => <Signup {...props} setUser={this.setUser} />}
-          />
-          <Route
-            path='/login'
-            render={(props) => <Login {...props} setUser={this.setUser}/>}
-          />*/
