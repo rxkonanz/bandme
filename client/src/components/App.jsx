@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
-import Signup from './pages/Signup';
+import MusicianSignUp from './pages/MusicianSignUp';
+import PreSignUp from './pages/PreSignUp';
 import Guitarists from './pages/Guitarists';
 import api from '../api';
 import logo from '../logo.svg';
@@ -59,7 +60,11 @@ export default class App extends Component {
           />
           <Route
             path='/signup'
-            render={(props) => <Signup {...props} setUser={this.setUser} />}
+            render={(props) => <PreSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/musician-signup'
+            render={(props) => <MusicianSignUp {...props} setUser={this.setUser} />}
           />
           <Route
             path='/login'

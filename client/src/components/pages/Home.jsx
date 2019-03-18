@@ -7,16 +7,10 @@ export default class Home extends Component {
 
   state = {
     artistType: localStorage.artistType,
-    homeData: []
+    allBands: []
   }
-
   componentDidMount() {
-    if(this.state.artistType === "band"){
-      this.getMusicians()
-    }
-    else {
-      this.getBands()
-    }
+    this.getBands() //calls once 
   }
 
   logIn = () => {
@@ -27,40 +21,61 @@ export default class Home extends Component {
     }
   }
 
-  getMusicians = () => {
-   Axios.get("http://localhost:5000/api/all-musicians")
-      .then(res => {
-        let musiciansArray = res.data.allMusicians
-        this.setState({
-          homeData: musiciansArray
-        })
-      })
-  }
-
   getBands = () => {
     Axios.get("http://localhost:5000/api/all-bands")
       .then(res => {
         let bandsArray = res.data.allBands
+        // console.log(bandsArray)
         this.setState({
-          homeData: bandsArray
+          allBands:res.data.allBands
         })
       })
   }
 
   showData = () => {
-    let result = this.state.homeData.map((element,i) => {
-      return (<div>
-                <NavLink to="/musicians/guitar">Guitar Players</NavLink>
-              </div>)
-    })
-    return result
+    console.log(this)
+    if(this.state.artistType === 'band'){
+      return (
+              <div class="container">
+                <h1 className="bands-home-title">I am looking for a:</h1>
+                <div class="row">
+                  <div className="artist-type-div col-lg-4">
+                  <a href="/musicians/guitar"><img src="../../images/guitarist.png" className="artist-type-icon" alt="guitarist" />
+                    <p>Guitar Player</p></a>
+                  </div>
+                  <div className="artist-type-div col-lg-4">
+                  <a href="/musicians/singer"><img src="../../images/singer.png" className="artist-type-icon" alt="singer" />
+                    <p>Singer</p></a>
+                  </div>
+                  <div className="artist-type-div col-lg-4">
+                    <a href="/musicians/drummer"><img src="../../images/drummer.png" className="artist-type-icon" alt="drummer"/>
+                    <p>Drummer</p></a>
+                  </div>
+                </div>
+              </div>
+            )
+    }
+    else {
+      let showBands = this.state.allBands.map( (band) => {
+        return  <div className="col-xl-4 col-lg-4 band-box">
+                  <img src="../../images/band-icon.jpg" className="band-image" alt="alt" />
+                  <p>{band.username}</p>
+                </div>
+      })
+      return showBands;
+    }
   }
 
   render() {    
     return (  
       <div className="Home">
         {this.logIn()}
-        {this.showData()}
+        <div className="container">
+          <div className="row">
+            {this.showData()}
+          </div>
+        </div>
+        
       </div>
     );
   }

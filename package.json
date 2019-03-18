@@ -10,5 +10,11 @@
   },
   "engines": {
     "node": "8.9.4"
+  },
+  "dependencies": {
+    "bootstrap": "^4.3.1",
+    "cloudinary": "^1.13.2",
+    "multer": "^1.4.1",
+    "multer-storage-cloudinary": "^2.2.1"
   }
 }

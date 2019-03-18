@@ -313,7 +313,40 @@ a {
 }
 // END OF LOGIN & SIGNUP STYLING
 
-// HOME PAGE STYLING //
-.musician-type-link {
+// PRE SIGNUP STYLING
+.pre-signup {
+  margin-top: 40px;
+}
+// END SIGNUP STYLING
+
+// HOME PAGE STYLING
+.important-type-link {
   margin-left: 40px;
 }
+.container {
+  margin: 20px 10% 0 10%;
+  max-width: 5000px !important;
+  width: 80% !important;
+}
+.band-image {
+  margin: 0 5%;
+  width: 90%;
+}
+.bands-home-title {
+  margin-bottom: 35px;
+  margin-top: 15px;
+}
+.artist-type-icon {
+  height: 300px;
+}
+.artist-type-div {
+  text-align: center;
+}
+// END HOMEPAGE STYLING
+
+// MUSICIAN SIGNUP STYLING 
+.form-title {
+  margin-bottom: 20px;
+  margin-top: 25px;
+}
+// END MUSICIAN SIGNUP STYLING
