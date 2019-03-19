@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import MusicianSignUp from './pages/MusicianSignUp';
 import PreSignUp from './pages/PreSignUp';
 import Guitarists from './pages/Guitarists';
+import Drummers from './pages/Drummers';
 import api from '../api';
 import logo from '../logo.svg';
 
@@ -57,6 +58,10 @@ export default class App extends Component {
           <Route
             path='/musicians/guitar'
             render={(props) => <Guitarists {...props} setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route
+            path='/musicians/drummer'
+            render={(props) => <Drummers {...props} setUser={this.setUser} user={this.state.user}/>}
           />
           <Route
             path='/signup'

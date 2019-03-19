@@ -10,7 +10,9 @@ export default class MusicianSignup extends Component {
       password: "",
       message: null,
       artistType:'musician',
-      ytLink: ""
+      ytLink: "",
+      imgLink: "",
+      instrument: "guitarist"
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -28,7 +30,9 @@ export default class MusicianSignup extends Component {
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
-      ytLink: this.getVideoId(this.state.ytLink)
+      ytLink: this.getVideoId(this.state.ytLink),
+      imgLink: this.state.imgLink,
+      instrument: this.state.instrument
     }
     api.signup(data)
       .then(result => {
@@ -58,7 +62,7 @@ export default class MusicianSignup extends Component {
               <h4 className="form-title">Register as a Musician</h4>
               <form className="form" method="post" enctype="multipart/form-data">
 
-                  <input name="photo" type="file" id="set-profile-picture" class="fancy-input" accept="image/x-png,image/gif,image/jpeg" required />
+                  <input name="photo" type="file" id="set-profile-picture" class="fancy-input" onChange={this.handleInputChange} required />
 
                   <div className="form__field">
                     <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
@@ -76,6 +80,15 @@ export default class MusicianSignup extends Component {
                     <input type="text" value={this.state.ytLink} name="ytLink" placeholder="youtube link" onChange={this.handleInputChange} />
                   </div>
 
+                  <div class="form__field">
+                    I am a: 
+                    <select className="artist-type-dropdown" name="instrument" onChange={this.handleInputChange}>
+                      <option name="guitarist" value="guitarist">Guitar Player</option>
+                      <option name="singer" value="singer">Singer</option>
+                      <option name="drummer" value="drummer">Drummer</option>
+                    </select>
+                  </div>
+                  
                   <div class="form__field">
                     <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input>
                     <a href="/login">Already have an Account? Log In.</a>

@@ -18,9 +18,23 @@ router.get("/all-bands", (req, res) => {
 })
 
 router.get("/guitarists", (req, res) => {
-  User.find({artistType: 'musician'})
+  User.find({artistType: 'musician', instrument: 'guitarist'})
   .then(allGuitarists => {
     res.json({allGuitarists})
+  })
+})
+
+router.get("/singers", (req, res) => {
+  User.find({artistType: 'musician', instrument: 'singer'})
+  .then(allGuitarists => {
+    res.json({allGuitarists})
+  })
+})
+
+router.get("/drummers", (req, res) => {
+  User.find({artistType: 'musician', instrument: 'drummer'})
+  .then(allDrummers => {
+    res.json({allDrummers})
   })
 })
 

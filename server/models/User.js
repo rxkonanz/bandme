@@ -5,7 +5,9 @@ const userSchema = new Schema({
   username: String,
   password: String,
   artistType: String,
-  ytLink: String
+  ytLink: String,
+  imgLink: String,
+  instrument: String
 }, {
     timestamps: {
       createdAt: 'created_at',
