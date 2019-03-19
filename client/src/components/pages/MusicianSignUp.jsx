@@ -25,6 +25,7 @@ export default class MusicianSignup extends Component {
 
   handleClick(e) {
     e.preventDefault()
+    console.log(this.state, e.target.photo, e.target)
     let data = {
       username: this.state.username,
       name: this.state.name,
@@ -43,6 +44,29 @@ export default class MusicianSignup extends Component {
       .catch(err => this.setState({ message: err.toString() }))
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    
+    let data = {
+      username: this.state.username,
+      name: this.state.name,
+      password: this.state.password,
+      artistType: this.state.artistType,
+      ytLink: this.getVideoId(this.state.ytLink),
+      imgLink: this.state.imgLink,
+      instrument: this.state.instrument
+    }
+    
+    api.signup(data)
+      .then(result => {
+        console.log('SUCCESS!')
+        this.props.setUser()
+        this.props.history.push("/home") // Redirect to the home page
+      })
+      .catch(err => this.setState({ message: err.toString() }))
+  }
+
+
   getVideoId = (url) => {
     var regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
     var match = url.match(regExp);
@@ -60,9 +84,11 @@ export default class MusicianSignup extends Component {
         <div className="grid align__item">
           <div className="login">
               <h4 className="form-title">Register as a Musician</h4>
-              <form className="form" method="post" enctype="multipart/form-data">
+              <form onSubmit={this.handleSubmit} className="form" method="post" enctype="multipart/form-data">
 
-                  <input name="photo" type="file" id="set-profile-picture" class="fancy-input" onChange={this.handleInputChange} required />
+                  <div className="form__field">
+                    <input type="text" value={this.state.imgLink} name="imgLink" placeholder="link to profile image" onChange={this.handleInputChange} />
+                  </div>
 
                   <div className="form__field">
                     <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
@@ -90,7 +116,9 @@ export default class MusicianSignup extends Component {
                   </div>
                   
                   <div class="form__field">
-                    <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input>
+                    {/* <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input> */}
+                    <input type="submit" value="Register"></input>
+
                     <a href="/login">Already have an Account? Log In.</a>
                   </div>
               </form>

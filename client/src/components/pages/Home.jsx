@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Axios from 'axios';
 import api from '../../api'
-import { Redirect, NavLink } from 'react-router-dom'
+import { Redirect } from 'react-router-dom'
 
 export default class Home extends Component {
 
@@ -58,7 +58,7 @@ export default class Home extends Component {
     else {
       let showBands = this.state.allBands.map( (band) => {
         return  <div className="col-xl-4 col-lg-4 band-box">
-                  <img src="../../images/band-icon.jpg" className="band-image" alt="alt" />
+                  <img src={band.imgLink} className="band-image" alt="alt" />
                   <p>{band.username}</p>
                 </div>
       })

@@ -10,7 +10,8 @@ const bcryptSalt = 10
 
 router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
   console.log('CHECK HERE')
-  console.log(req.body)
+  
+  console.log(req.body,req.file)
   const { username, password, name, artistType, ytLink, imgLink, instrument } = req.body
   if (!username || !password) {
     res.status(400).json({ message: "Indicate username and password" })

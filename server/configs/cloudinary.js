@@ -13,6 +13,7 @@ var storage = cloudinaryStorage({
   folder: 'bandme', // The name of the folder in cloudinary
   allowedFormats: ['jpg', 'png'],
   filename: function (req, file, cb) {
+    console.log('in here',file.originalname)
     cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
   }
 });
