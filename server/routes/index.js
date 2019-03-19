@@ -26,8 +26,8 @@ router.get("/guitarists", (req, res) => {
 
 router.get("/singers", (req, res) => {
   User.find({artistType: 'musician', instrument: 'singer'})
-  .then(allGuitarists => {
-    res.json({allGuitarists})
+  .then(allSingers => {
+    res.json({allSingers})
   })
 })
 

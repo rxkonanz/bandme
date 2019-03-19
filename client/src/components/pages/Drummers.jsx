@@ -36,6 +36,7 @@ export default class Drummers extends Component {
     render() {
         return(
             <div className="container">
+                <h1 className="show-artists-title">Drummers looking for a Band:</h1>
                 <div className="row">
                     {this.showDrummers()}
                 </div>

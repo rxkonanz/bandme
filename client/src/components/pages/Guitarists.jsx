@@ -36,6 +36,7 @@ export default class Guitarists extends Component {
     render() {
         return(
             <div className="container">
+                <h1 className="show-artists-title">Guitar Players looking for a Band:</h1>
                 <div className="row">
                     {this.showGuitarists()}
                 </div>

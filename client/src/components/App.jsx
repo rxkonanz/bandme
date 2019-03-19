@@ -6,6 +6,7 @@ import MusicianSignUp from './pages/MusicianSignUp';
 import PreSignUp from './pages/PreSignUp';
 import Guitarists from './pages/Guitarists';
 import Drummers from './pages/Drummers';
+import Singers from './pages/Singers';
 import api from '../api';
 import logo from '../logo.svg';
 
@@ -62,6 +63,10 @@ export default class App extends Component {
           <Route
             path='/musicians/drummer'
             render={(props) => <Drummers {...props} setUser={this.setUser} user={this.state.user}/>}
+          />
+          <Route
+            path='/musicians/singer'
+            render={(props) => <Singers {...props} setUser={this.setUser} user={this.state.user}/>}
           />
           <Route
             path='/signup'
