@@ -25,8 +25,8 @@ export default class Guitarists extends Component {
 
     showGuitarists = () => {
         let result = this.state.allGuitarists.map((guitarist,i) => {
-          return (<div className="col-xl-6 col-lg-6">
-                    <iframe width="560" height="314" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          return (<div className="each-musician col-xl-6 col-lg-12">
+                    <iframe width="560" title="youtubevideo" height="314" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>{guitarist.username}</p>
                   </div>)
         })
@@ -36,6 +36,7 @@ export default class Guitarists extends Component {
     render() {
         return(
             <div className="container">
+                <img src="../../images/guitar-logo.png" className="musician-type-image" alt="guitar"/>
                 <h1 className="show-artists-title">Guitar Players looking for a Band:</h1>
                 <div className="row">
                     {this.showGuitarists()}

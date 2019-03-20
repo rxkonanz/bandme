@@ -3,6 +3,7 @@ import { Route, Link, NavLink, Switch } from 'react-router-dom';
 import Home from './pages/Home';
 import Login from './pages/Login';
 import MusicianSignUp from './pages/MusicianSignUp';
+import BandSignUp from './pages/BandSignUp';
 import PreSignUp from './pages/PreSignUp';
 import Guitarists from './pages/Guitarists';
 import Drummers from './pages/Drummers';
@@ -75,6 +76,10 @@ export default class App extends Component {
           <Route
             path='/musician-signup'
             render={(props) => <MusicianSignUp {...props} setUser={this.setUser} />}
+          />
+          <Route
+            path='/band-signup'
+            render={(props) => <BandSignUp {...props} setUser={this.setUser} />}
           />
           <Route
             path='/login'

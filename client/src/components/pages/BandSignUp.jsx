@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import api from '../../api';
 
-export default class BandSignUp extends Component {
+export default class MusicianSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -9,10 +9,8 @@ export default class BandSignUp extends Component {
       name: "",
       password: "",
       message: null,
-      artistType:'band',
-      ytLink: "",
-      imgLink: "",
-      instrument: "guitarist"
+      artistType:'musician',
+      imgLink: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this)
   }
@@ -25,15 +23,36 @@ export default class BandSignUp extends Component {
 
   handleClick(e) {
     e.preventDefault()
+    console.log(this.state, e.target.photo, e.target)
+    let data = {
+        imgLink: this.state.imgLink,
+        username: this.state.username,
+        name: this.state.name,
+        password: this.state.password,
+        artistType: this.state.artistType
+    }
+    api.signup(data)
+      .then(result => {
+        console.log('SUCCESS!')
+        this.props.setUser()
+        this.props.history.push("/home") // Redirect to the home page
+      })
+      .catch(err => this.setState({ message: err.toString() }))
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+    
     let data = {
       username: this.state.username,
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
-      ytLink: "",
+      ytLink: this.getVideoId(this.state.ytLink),
       imgLink: this.state.imgLink,
-      instrument: ""
+      instrument: this.state.instrument
     }
+    
     api.signup(data)
       .then(result => {
         console.log('SUCCESS!')
@@ -48,10 +67,12 @@ export default class BandSignUp extends Component {
       <div className="Signup">
         <div className="grid align__item">
           <div className="login">
-              <h4 className="form-title">Register as a Musician</h4>
-              <form className="form" method="post" enctype="multipart/form-data">
+              <h4 className="form-title">Register as a Band</h4>
+              <form onSubmit={this.handleSubmit} className="form" method="post" enctype="multipart/form-data">
 
-                  <input name="photo" type="file" id="set-profile-picture" class="fancy-input" onChange={this.handleInputChange} required />
+                  <div className="form__field">
+                    <input type="text" value={this.state.imgLink} name="imgLink" placeholder="link to profile image" onChange={this.handleInputChange} />
+                  </div>
 
                   <div className="form__field">
                     <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
@@ -66,7 +87,9 @@ export default class BandSignUp extends Component {
                   </div>
                   
                   <div class="form__field">
-                    <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input>
+                    {/* <input type="submit" onClick={(e) => this.handleClick(e)} value="Register"></input> */}
+                    <input type="submit" value="Register"></input>
+
                     <a href="/login">Already have an Account? Log In.</a>
                   </div>
               </form>

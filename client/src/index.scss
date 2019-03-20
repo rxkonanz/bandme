@@ -334,6 +334,7 @@ a {
   width: 90%;
 }
 .bands-home-title {
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 35px;
   margin-top: 15px;
 }
@@ -345,7 +346,8 @@ a {
   text-align: center;
 }
 .show-artists-title {
-  margin-bottom: 30px;
+  font-family: 'Poppins', sans-serif;
+  margin-bottom: 50px;
 }
 // END HOMEPAGE STYLING
 
@@ -356,5 +358,9 @@ a {
 }
 .artist-type-dropdown {
   margin-left: 20px;
+}
+.musician-type-image {
+  height: 100px;
+  width: 100px;
 }
 // END MUSICIAN SIGNUP STYLING

@@ -25,8 +25,8 @@ export default class Drummers extends Component {
 
     showDrummers = () => {
         let result = this.state.allDrummers.map((drummer,i) => {
-          return (<div className="col-xl-6 col-lg-6">
-                    <iframe width="560" height="314" src={drummer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          return (<div className="each-musician col-xl-6 col-lg-6">
+                    <iframe width="560" height="314" title="youtubevideo" src={drummer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>{drummer.username}</p>
                   </div>)
         })
@@ -36,6 +36,7 @@ export default class Drummers extends Component {
     render() {
         return(
             <div className="container">
+                <img src="../../images/drums-logo.png" className="musician-type-image" alt="drums"/>
                 <h1 className="show-artists-title">Drummers looking for a Band:</h1>
                 <div className="row">
                     {this.showDrummers()}
