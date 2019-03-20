@@ -2,6 +2,7 @@ const express = require('express');
 const { isLoggedIn } = require('../middlewares')
 const router = express.Router();
 const User = require("../models/User")
+const Like = require("../models/Like")
 
 router.get("/all-musicians", (req, res) => {
   User.find({artistType: 'musician'})
@@ -39,8 +40,12 @@ router.get("/drummers", (req, res) => {
 })
 
 router.post("/like-video", (req, res) => {
-  console.log(localStorage)
+  let bandEmail = req.body.bandEmail
+  let musicianEmail = req.body.musicianEmail
+  User.update(
+    {email: bandEmail},
+    {$push: {likedMusicians: musicianEmail}}
+  )
 })
-
 
 module.exports = router;

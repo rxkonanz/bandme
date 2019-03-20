@@ -9,7 +9,7 @@ const userSchema = new Schema({
   ytLink: String,
   imgLink: String,
   instrument: String,
-  likedMusicians: []
+  likedMusicians: Array
 }, {
     timestamps: {
       createdAt: 'created_at',
