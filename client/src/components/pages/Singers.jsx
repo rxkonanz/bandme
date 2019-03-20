@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom'
 export default class Singers extends Component {
 
     state = {
-        allSingers: []
+        allSingers: [],
+        currentUser: localStorage.userEmail
     }
 
     componentDidMount() {

@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom'
 export default class Guitarists extends Component {
 
     state = {
-        allGuitarists: []
+        allGuitarists: [],
+        currentUser: localStorage.userEmail
     }
 
     componentDidMount() {
@@ -23,9 +24,9 @@ export default class Guitarists extends Component {
         })
     }
 
-    likeVideo = () => {
+    likeVideo = (musicianEmail) => {
         alert("You liked this video!");
-        Axios.post("http://localhost:5000/api/like-video")
+        Axios.post("http://localhost:5000/api/like-video", {bandEmail: this.state.currentUser, musicianEmail})
             .then(res => {
                 console.log(res)
             })
@@ -36,7 +37,7 @@ export default class Guitarists extends Component {
           return (<div className="each-musician col-xl-6 col-lg-12">
                     <iframe className="youtube-video" title="youtubevideo" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     <p>{guitarist.name}</p>
-                    <button onClick={this.likeVideo}>Like</button>
+                    <button onClick={(e) => this.likeVideo(guitarist.email)}>Like</button>
                   </div>)
         })
         return result

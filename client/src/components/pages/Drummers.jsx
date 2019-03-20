@@ -6,7 +6,8 @@ import { Redirect } from 'react-router-dom'
 export default class Drummers extends Component {
 
     state = {
-        allDrummers: []
+        allDrummers: [],
+        currentUser: localStorage.userEmail
     }
 
     componentDidMount() {

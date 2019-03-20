@@ -38,6 +38,7 @@ export default {
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         localStorage.setItem('user', JSON.stringify(res.data))
+        localStorage.setItem('userEmail', res.data.email)
         localStorage.setItem('artistType', res.data.artistType)
         return res.data
       })
@@ -53,6 +54,7 @@ export default {
       .then(res => {
         // If we have localStorage.getItem('user') saved, the application will consider we are loggedin
         localStorage.setItem('user', JSON.stringify(res.data))
+        localStorage.setItem('userEmail', res.data.email)
         localStorage.setItem('artistType', res.data.artistType)
         return res.data
       })
