@@ -12,20 +12,20 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
   console.log('CHECK HERE')
   
   console.log(req.body,req.file)
-  const { username, password, name, artistType, ytLink, imgLink, instrument } = req.body
-  if (!username || !password) {
-    res.status(400).json({ message: "Indicate username and password" })
+  const { email, name, password, artistType, ytLink, imgLink, instrument } = req.body
+  if (!email || !password) {
+    res.status(400).json({ message: "Indicate email and password" })
     return
   }
-  User.findOne({ username })
+  User.findOne({ email })
     .then(userDoc => {
       if (userDoc !== null) {
-        res.status(409).json({ message: "The username already exists" })
+        res.status(409).json({ message: "The email already exists" })
         return
       }
       const salt = bcrypt.genSaltSync(bcryptSalt)
       const hashPass = bcrypt.hashSync(password, salt)
-      const newUser = new User({ username, password: hashPass, name, artistType, ytLink, imgLink, instrument })
+      const newUser = new User({ email, password: hashPass, name, artistType, ytLink, imgLink, instrument })
       return newUser.save()
     })
     .then(userSaved => {
@@ -42,15 +42,15 @@ router.post("/signup", uploadCloud.single('photo'), (req, res, next) => {
 })
 
 router.post("/login", (req, res, next) => {
-  const { username, password } = req.body
+  const { email, password } = req.body
 
-  // first check to see if there's a document with that username
-  User.findOne({ username })
+  // first check to see if there's a document with that email
+  User.findOne({ email })
     .then(userDoc => {
-      // "userDoc" will be empty if the username is wrong (no document in database)
+      // "userDoc" will be empty if the email is wrong (no document in database)
       if (!userDoc) {
         // create an error object to send to our error handler with "next()"
-        next(new Error("Incorrect username "))
+        next(new Error("Incorrect email!"))
         return
       }
 
@@ -58,7 +58,7 @@ router.post("/login", (req, res, next) => {
       // "compareSync()" will return false if the "password" is wrong
       if (!bcrypt.compareSync(password, userDoc.password)) {
         // create an error object to send to our error handler with "next()"
-        next(new Error("Password is wrong"))
+        next(new Error("Password is wrong!"))
         return
       }
 

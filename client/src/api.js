@@ -44,10 +44,10 @@ export default {
       .catch(errHandler)
   },
 
-  login(username, password) {
+  login(email, password) {
     return service
       .post('/login', {
-        username,
+        email,
         password,
       })
       .then(res => {
@@ -59,11 +59,20 @@ export default {
       .catch(errHandler)
   },
 
+  likeVideo(userInfo) {
+    return service
+    .post('/like-video', userInfo)
+    .then(res => {
+      console.log(res);
+    })
+    .catch(errHandler)
+  },
+
   logout() {
     localStorage.removeItem('user')
     return service
       .get('/logout')
-  },
+  }
 
   // This is an example on how to use this method in a different file
   // api.getCountries().then(countries => { /* ... */ })

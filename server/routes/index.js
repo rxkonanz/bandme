@@ -38,5 +38,9 @@ router.get("/drummers", (req, res) => {
   })
 })
 
+router.post("/like-video", (req, res) => {
+  console.log(localStorage)
+})
+
 
 module.exports = router;

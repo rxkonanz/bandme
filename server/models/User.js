@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const userSchema = new Schema({
-  username: String,
+  email: String,
+  name: String,
   password: String,
   artistType: String,
   ytLink: String,
   imgLink: String,
-  instrument: String
+  instrument: String,
+  likedMusicians: []
 }, {
     timestamps: {
       createdAt: 'created_at',

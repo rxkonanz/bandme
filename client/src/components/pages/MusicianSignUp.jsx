@@ -5,7 +5,7 @@ export default class MusicianSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
+      email: "",
       name: "",
       password: "",
       message: null,
@@ -27,7 +27,7 @@ export default class MusicianSignup extends Component {
     e.preventDefault()
     console.log(this.state, e.target.photo, e.target)
     let data = {
-      username: this.state.username,
+      email: this.state.email,
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
@@ -48,7 +48,7 @@ export default class MusicianSignup extends Component {
     e.preventDefault()
     
     let data = {
-      username: this.state.username,
+      email: this.state.email,
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
@@ -91,7 +91,7 @@ export default class MusicianSignup extends Component {
                   </div>
 
                   <div className="form__field">
-                    <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
+                    <input type="email" value={this.state.email} name="email" placeholder="email" onChange={this.handleInputChange} />
                   </div>
                   
                   <div className="form__field">

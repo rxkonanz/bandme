@@ -27,7 +27,8 @@ export default class Singers extends Component {
         let result = this.state.allSingers.map((singer,i) => {
           return (<div className="each-musician col-xl-6 col-lg-6">
                     <iframe width="560" title="youtubevideo" height="314" src={singer.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>{singer.username}</p>
+                    <p>{singer.name}</p>
+                    <button>Like</button>
                   </div>)
         })
         return result

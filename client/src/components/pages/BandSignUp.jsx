@@ -5,11 +5,11 @@ export default class MusicianSignup extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      username: "",
+      email: "",
       name: "",
       password: "",
       message: null,
-      artistType:'musician',
+      artistType:'band',
       imgLink: ""
     }
     this.handleInputChange = this.handleInputChange.bind(this)
@@ -26,7 +26,7 @@ export default class MusicianSignup extends Component {
     console.log(this.state, e.target.photo, e.target)
     let data = {
         imgLink: this.state.imgLink,
-        username: this.state.username,
+        email: this.state.email,
         name: this.state.name,
         password: this.state.password,
         artistType: this.state.artistType
@@ -44,13 +44,11 @@ export default class MusicianSignup extends Component {
     e.preventDefault()
     
     let data = {
-      username: this.state.username,
+      email: this.state.email,
       name: this.state.name,
       password: this.state.password,
       artistType: this.state.artistType,
-      ytLink: this.getVideoId(this.state.ytLink),
-      imgLink: this.state.imgLink,
-      instrument: this.state.instrument
+      imgLink: this.state.imgLink
     }
     
     api.signup(data)
@@ -75,7 +73,7 @@ export default class MusicianSignup extends Component {
                   </div>
 
                   <div className="form__field">
-                    <input type="text" value={this.state.username} name="username" placeholder="username" onChange={this.handleInputChange} />
+                    <input type="email" value={this.state.email} name="email" placeholder="email" onChange={this.handleInputChange} />
                   </div>
                   
                   <div className="form__field">

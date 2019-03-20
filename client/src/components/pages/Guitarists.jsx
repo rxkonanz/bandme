@@ -23,11 +23,20 @@ export default class Guitarists extends Component {
         })
     }
 
+    likeVideo = () => {
+        alert("You liked this video!");
+        Axios.post("http://localhost:5000/api/like-video")
+            .then(res => {
+                console.log(res)
+            })
+    }
+
     showGuitarists = () => {
         let result = this.state.allGuitarists.map((guitarist,i) => {
           return (<div className="each-musician col-xl-6 col-lg-12">
                     <iframe width="560" title="youtubevideo" height="314" src={guitarist.ytLink} frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <p>{guitarist.username}</p>
+                    <p>{guitarist.name}</p>
+                    <button onClick={this.likeVideo}>Like</button>
                   </div>)
         })
         return result
